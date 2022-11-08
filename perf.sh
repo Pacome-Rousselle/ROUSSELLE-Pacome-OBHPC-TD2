@@ -1,11 +1,11 @@
 cd dgemm
-./perf.sh
+./perf_dgemm.sh
 cd ..
 
 cd dotprod
-./perf.sh
+./perf_dotprod.sh
 cd ..
 
 cd reduc
-./perf.sh
+./perf_reduc.sh
 cd ..

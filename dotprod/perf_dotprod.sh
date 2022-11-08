@@ -1,47 +1,63 @@
+data_size="100 50"
+directory="datafiles"
+
+function datafile {
+    ./$1 $data_size > $2.dat
+    grep -w "BASE" $2.dat >> $directory"/base.dat"
+    grep -w "UNROLL4" $2.dat >> $directory"/unroll4.dat"
+    grep -w "UNROLL8" $2.dat >> $directory"/unroll8.dat"
+    grep -w "CBLAS" $2.dat >> $directory"/cblas.dat"
+    rm -f $2.dat
+}
+
+make clean
+rm -rf $directory
+mkdir $directory
+
 #Question 1, no optflags
 make CC=gcc
-./dotprod 100 10 > gcc.dat
+datafile "dotprod" "gccO0"
 make clean
 
 make CC=clang
-./dotprod 100 10 > clang.dat
+datafile "dotprod" "clangO0"
 make clean
 
-#make CC=icc
-#./dotprod 100 10 > icc.dat
-#make clean
+# make CC=icc
+# datafile "dotprod" "iccO0"
+# make clean
 
-#make CC=icx
-#./dotprod 100 10 > icx.dat
-#make clean
+# make CC=icx
+# datafile "dotprod" "icxO0"
+# make clean
 
 #Question 2-3, optflags
 make opti CC=gcc
-./dotprodO1 100 10 > gccO1.dat
-./dotprodO2 100 10 > gccO2.dat
-./dotprodO3 100 10 > gccO3.dat
-./dotprodOfast 100 10 > gccOfast.dat
+datafile "dotprodO1" "gccO1"
+datafile "dotprodO2" "gccO2"
+datafile "dotprodO3" "gccO3"
+datafile "dotprodOfast" "gccOfast"
 make clean
 
 make opti CC=clang
-./dotprodO1 100 10 > clangO1.dat
-./dotprodO2 100 10 > clangO2.dat
-./dotprodO3 100 10 > clangO3.dat
-./dotprodOfast 100 10 > clangOfast.dat
+datafile "dotprodO1" "clangO1"
+datafile "dotprodO2" "clangO2"
+datafile "dotprodO3" "clangO3"
+datafile "dotprodOfast" "clangOfast"
 make clean
 
-#make opti CC=icc
-#./dotprodO1 100 10 > iccO1.dat
-#./dotprodO2 100 10 > iccO2.dat
-#./dotprodO3 100 10 > iccO3.dat
-#./dotprodOfast 100 10 > iccOfast.dat
-#make clean
+# make opti CC=icc
+# datafile "dotprodO1" "iccO1"
+# datafile "dotprodO2" "iccO2"
+# datafile "dotprodO3" "iccO3"
+# datafile "dotprodOfast" "iccOfast"
+# make clean
 
-#make opti CC=icx
-#./dotprodO1 100 10 > icxO1.dat
-#./dotprodO2 100 10 > icxO2.dat
-#./dotprodO3 100 10 > icxO3.dat
-#./dotprodOfast 100 10 > icxOfast.dat
-#make clean
+# make opti CC=icx
+# datafile "dotprodO1" "icxO1"
+# datafile "dotprodO2" "icxO2"
+# datafile "dotprodO3" "icxO3"
+# datafile "dotprodOfast" "icxOfast"
+# make clean
 
 #Question 5, gnuplot
