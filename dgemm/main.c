@@ -50,7 +50,8 @@ int main(int argc, char **argv)
   run_benchmark("IJK",   dgemm_ijk, n, r);
   run_benchmark("IKJ",   dgemm_ikj, n, r);
   run_benchmark("IEX",   dgemm_iex, n, r);
-  run_benchmark("UNROLL", dgemm_unroll, n, r);
+  run_benchmark("UNROLL4", dgemm_unroll_4, n, r);
+  run_benchmark("UNROLL8", dgemm_unroll_8,n,r);
   run_benchmark("CBLAS", dgemm_cblas, n, r);
   
   //
