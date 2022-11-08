@@ -7,7 +7,7 @@ FILES=main.c tools.c kernels.c
 
 all: reduc
 
-opti: reducopt
+opti: reducO
 
 #No optimization flags on
 reduc:
@@ -30,30 +30,30 @@ endif
 endif
 
 #Optimization flags on 
-reducopt:
+reducO:
 ifeq ($(CC),icc)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o reducO1 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o reducO2 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o reducO3 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o reducOfast $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(INTEL_LFLAGS)
 else
 ifeq ($(CC),icx)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o reducO1 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o reducO2 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o reducO3 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o reducOfast $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(INTEL_LFLAGS)
 else
 ifeq ($(CC),gcc)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o reducO1 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o reducO2 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o reducO3 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o reducOfast $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(GNU_LFLAGS)
 else
 ifeq ($(CC),clang)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o reducO1 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o reducO2 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o reducO3 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o reducOfast $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(GNU_LFLAGS)
 else
 	@echo "ERROR: no compiler specified using CC. Possible values for CC: gcc, icc, icx, clang"
 endif

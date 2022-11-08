@@ -7,7 +7,7 @@ FILES=main.c tools.c kernels.c
 
 all: dgemm
 
-opti: dgemmopt
+opti: dgemmO
 
 #No optimization flags on
 dgemm:
@@ -30,30 +30,30 @@ endif
 endif
 
 #Optimization flags on 
-dgemmopt:
+dgemmO:
 ifeq ($(CC),icc)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o dgemmO1 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o dgemmO2 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o dgemmO3 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o dgemmOfast $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(INTEL_LFLAGS)
 else
 ifeq ($(CC),icx)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o dgemmO1 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o dgemmO2 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o dgemmO3 $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o dgemmOfast $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(INTEL_LFLAGS)
 else
 ifeq ($(CC),gcc)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o dgemmO1 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o dgemmO2 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o dgemmO3 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o dgemmOfast $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(GNU_LFLAGS)
 else
 ifeq ($(CC),clang)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o dgemmO1 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O2 $(FILES) -o dgemmO2 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -O3 $(FILES) -o dgemmO3 $(GNU_LFLAGS)
-	$(CC) $(CFLAGS) -Ofast $(FILES) -o dgemmOfast $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O1 $(FILES) -o $@1 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O2 $(FILES) -o $@2 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -O3 $(FILES) -o $@3 $(GNU_LFLAGS)
+	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@fast $(GNU_LFLAGS)
 else
 	@echo "ERROR: no compiler specified using CC. Possible values for CC: gcc, icc, icx, clang"
 endif
@@ -63,7 +63,3 @@ endif
 
 clean:
 	@rm -Rf dgemm*
-
-#Remove all mesure files
-cleandat:
-	@rm -Rf *.dat
