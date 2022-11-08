@@ -1,11 +1,16 @@
+# sudo cpupower -c 0 frequency-set -g performance
+
 cd dgemm
-./perf_dgemm.sh
+./run_dgemm.sh
+./data_dgemm.sh
 cd ..
 
 cd dotprod
-./perf_dotprod.sh
+./run_dotprod.sh
+./data_dotprod.sh
 cd ..
 
 cd reduc
-./perf_reduc.sh
+./run_reduc.sh
+./data_reduc.sh
 cd ..
