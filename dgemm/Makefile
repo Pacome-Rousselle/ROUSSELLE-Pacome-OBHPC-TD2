@@ -11,14 +11,14 @@ all: dgemm
 dgemm:
 ifeq ($(CC),icc)
 	$(CC) $(CFLAGS) $(FILES) -o $@ $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o $@O $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O $(FILES) -o $@O $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -O2 $(FILES) -o $@O2 $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -O3 $(FILES) -o $@O3 $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@Ofast $(INTEL_LFLAGS)
 else
 ifeq ($(CC),icx)
 	$(CC) $(CFLAGS) $(FILES) -o $@ $(INTEL_LFLAGS)
-	$(CC) $(CFLAGS) -O1 $(FILES) -o $@O $(INTEL_LFLAGS)
+	$(CC) $(CFLAGS) -O $(FILES) -o $@O $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -O2 $(FILES) -o $@O2 $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -O3 $(FILES) -o $@O3 $(INTEL_LFLAGS)
 	$(CC) $(CFLAGS) -Ofast $(FILES) -o $@Ofast $(INTEL_LFLAGS)
