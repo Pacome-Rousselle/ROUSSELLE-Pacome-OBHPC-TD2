@@ -48,6 +48,7 @@ int main(int argc, char **argv)
 	 "n", "r", "d", "min", "max", "mean", "stddev (%)", "MiB/s");
   
   run_benchmark("BASE",   dotprod_base, n, r);
+  run_benchmark("UNROLL8",   dotprod_unroll_8, n, r);
   
   //
   return 0;
