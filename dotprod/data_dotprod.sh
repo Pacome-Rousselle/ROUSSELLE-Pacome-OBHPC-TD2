@@ -20,8 +20,12 @@ done
 
 #GNUPLOT
 cp versions.gp $ver; cp versions_all.gp $ver
+
 cp gcc.gp $CC; cp clang.gp $CC
 cp gcc_all.gp $CC; cp clang_all.gp $CC
+
+# cp icc.gp $CC; cp icx.gp $CC
+# cp icc_all.gp $CC; cp icx_all.gp $CC
 
 cd $ver; gnuplot versions.gp; gnuplot versions_all.gp
 mv *.png ..
@@ -31,6 +35,9 @@ cd ..
 cd $CC
 gnuplot gcc.gp; gnuplot clang.gp; 
 gnuplot gcc_all.gp; gnuplot clang_all.gp; 
+
+# gnuplot icc.gp; gnuplot icx.gp; 
+# gnuplot icc_all.gp; gnuplot icx_all.gp; 
 
 mv *.png ..
 rm -f *.gp
