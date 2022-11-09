@@ -14,9 +14,6 @@ for file in $(ls *.dat); do
   grep "UNROLL8" "$file" >> "$ver/unroll8.dat" 
   sed -i "s/UNROLL8/${file%%.dat}/g" "$ver/unroll8.dat"
 
-  grep "CBLAS" "$file" >> "$ver/cblas.dat" 
-  sed -i "s/CBLAS/${file%%.dat}/g" "$ver/cblas.dat"
-
   tail -n +2 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
   mv $file $CC
 done 

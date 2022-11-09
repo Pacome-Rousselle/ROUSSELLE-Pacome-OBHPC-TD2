@@ -22,8 +22,4 @@ plot "base.dat" u  12:xtic(1) lc "red" notitle
 
 set title "unroll8" textcolor "black"
 plot "unroll8.dat" u  12:xtic(1) lc "purple" notitle
-
-set title "cblas" textcolor "black"
-plot "cblas.dat" u  12:xtic(1) lc "black" notitle
-
 unset multiplot

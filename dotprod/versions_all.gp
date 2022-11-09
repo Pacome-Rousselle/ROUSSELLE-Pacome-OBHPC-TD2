@@ -17,5 +17,4 @@ set xtic rotate by -45 scale 0
 
 set title "versions" textcolor "black"
 plot "base.dat" u  12:xtic(1) t "base" lc "red",\
-     "unroll8.dat" u  12:xtic(1) t "unroll8" lc "blue",\
-     "cblas.dat" u  12:xtic(1) t "cblas" lc "green"
+     "unroll8.dat" u  12:xtic(1) t "unroll8" lc "blue"
