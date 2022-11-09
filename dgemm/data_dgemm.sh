@@ -1,27 +1,51 @@
 #!/bin/bash
 
-directory="datafiles"
-rm -rf $directory
-mkdir $directory
+ver="versions"
+CC="compilers"
+img="graphs"
+
+rm -rf $ver $CC $img
+mkdir $ver $CC $img
 
 for file in $(ls *.dat); do
-  grep "IJK" "$file" >> "$directory/ijk.dat" 
-  sed -i "s/IJK/${file%%.dat}/g" "$directory/ijk.dat"
+  grep "IJK" "$file" >> "$ver/ijk.dat" 
+  sed -i "s/IJK/${file%%.dat}/g" "$ver/ijk.dat"
 
-  grep "IKJ" "$file" >> "$directory/ikj.dat" 
-  sed -i "s/IKJ/${file%%.dat}/g" "$directory/ikj.dat"
+  grep "IKJ" "$file" >> "$ver/ikj.dat" 
+  sed -i "s/IKJ/${file%%.dat}/g" "$ver/ikj.dat"
 
-  grep "IEX" "$file" >> "$directory/iex.dat" 
-  sed -i "s/IEX/${file%%.dat}/g" "$directory/iex.dat"
+  grep "IEX" "$file" >> "$ver/iex.dat" 
+  sed -i "s/IEX/${file%%.dat}/g" "$ver/iex.dat"
   
-  grep "UNROLL4" "$file" >> "$directory/unroll4.dat" 
-  sed -i "s/UNROLL4/${file%%.dat}/g" "$directory/unroll4.dat"
+  grep "UNROLL4" "$file" >> "$ver/unroll4.dat" 
+  sed -i "s/UNROLL4/${file%%.dat}/g" "$ver/unroll4.dat"
 
-  grep "UNROLL8" "$file" >> "$directory/unroll8.dat" 
-  sed -i "s/UNROLL8/${file%%.dat}/g" "$directory/unroll8.dat"
+  grep "UNROLL8" "$file" >> "$ver/unroll8.dat" 
+  sed -i "s/UNROLL8/${file%%.dat}/g" "$ver/unroll8.dat"
 
-  grep "CBLAS" "$file" >> "$directory/cblas.dat" 
-  sed -i "s/CBLAS/${file%%.dat}/g" "$directory/cblas.dat"
+  grep "CBLAS" "$file" >> "$ver/cblas.dat" 
+  sed -i "s/CBLAS/${file%%.dat}/g" "$ver/cblas.dat"
 
-  rm $file
+  tail -n +2 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+  mv $file $CC
 done 
+
+#GNUPLOT
+cp versions.gp $ver; cp versions_all.gp $ver
+cp gcc.gp $CC; cp clang.gp $CC
+cp gcc_all.gp $CC; cp clang_all.gp $CC
+
+cd $ver; gnuplot versions.gp; gnuplot versions_all.gp
+mv *.png ..
+rm -f *.gp 
+cd ..
+
+cd $CC
+gnuplot gcc.gp; gnuplot clang.gp; 
+gnuplot gcc_all.gp; gnuplot clang_all.gp; 
+
+mv *.png ..
+rm -f *.gp
+cd ..
+
+mv *.png $img
