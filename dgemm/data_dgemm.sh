@@ -31,13 +31,11 @@ for file in $(ls *.dat); do
 done 
 
 #GNUPLOT
-cp versions.gp $ver; cp versions_all.gp $ver
+cd plot; cp *.gp ..; cd ..
 
-cp gcc.gp $CC; cp clang.gp $CC
-cp gcc_all.gp $CC; cp clang_all.gp $CC
+mv versions.gp $ver; cp versions_all.gp $ver
 
-# cp icc.gp $CC; cp icx.gp $CC
-# cp icc_all.gp $CC; cp icx_all.gp $CC
+mv *.gp $CC;
 
 cd $ver; gnuplot versions.gp; gnuplot versions_all.gp
 mv *.png ..
