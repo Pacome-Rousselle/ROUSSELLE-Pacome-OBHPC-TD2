@@ -1,6 +1,6 @@
 set terminal png enhanced font "arial,15" fontscale 1.0 size 1000, 1000 
 set output "gcc_all.png"
-set title "Comparative histograms for gcc compilation flags per versions"
+set title "Comparative histograms for gcc optimization flags per dgemm version"
 
 set datafile separator ";"
 set grid

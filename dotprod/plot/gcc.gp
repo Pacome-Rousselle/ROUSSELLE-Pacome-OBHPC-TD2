@@ -1,6 +1,6 @@
 set terminal png enhanced font "arial,20" fontscale 1.0 size 2000, 2000 
 set output "gcc.png"
-set title "Separate plots for clang optimization flags"
+set title "Separate plots for gcc optimization flags per dotprod version"
 
 set datafile separator ";"
 set grid
@@ -15,7 +15,7 @@ set boxwidth 1.5 absolute
 set yrange [0:50000]
 set xtic rotate by -45 scale 0  
 
-set multiplot layout 2,3 rowsfirst title "gcc" textcolor "black"
+set multiplot layout 2,3 rowsfirst title "Separate plots for gcc optimization flags per dotprod version" textcolor "black"
 
 set title "gccO0" textcolor "black"
 plot "gccO0.dat" u  12:xtic(1) lc "red" notitle

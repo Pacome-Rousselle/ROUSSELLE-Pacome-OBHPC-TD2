@@ -1,6 +1,6 @@
 set terminal png enhanced font "arial,20" fontscale 1.0 size 2000, 2000 
 set output "versions.png"
-set title "Separate plots for version per optimization flags"
+set title "Separate plots of dgemm versions per optimization flags"
 
 set datafile separator ";"
 set grid
@@ -15,7 +15,7 @@ set boxwidth 1.5 absolute
 set yrange [0:750]
 set xtic rotate by -45 scale 0 
 
-set multiplot layout 2,3 rowsfirst title "Versions" textcolor "black"
+set multiplot layout 2,3 rowsfirst title "Separate plots of dgemm versions per optimization flags" textcolor "black"
 
 set title "ijk" textcolor "black"
 plot "ijk.dat" u  11:xtic(1) lc "red" notitle

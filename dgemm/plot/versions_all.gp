@@ -1,6 +1,6 @@
 set terminal png enhanced font "arial,20" fontscale 1.0 size 2000, 2000 
 set output "versions_all.png"
-set title "Comparative histograms of versions per optimization flags"
+set title "Comparative histograms of dgemm versions per optimization flags"
 
 set datafile separator ";"
 set grid
@@ -15,7 +15,7 @@ set boxwidth 0.5 absolute
 set yrange [0:750]
 set xtic rotate by -45 scale 0
 
-set title "versions" textcolor "black"
+set title "Comparative histograms of dgemm versions per optimization flags" textcolor "black"
 plot "ijk.dat" u  11:xtic(1) t "ijk" lc "red",\
      "ikj.dat" u  11:xtic(1) t "ikj" lc "blue",\
      "iex.dat" u  11:xtic(1) t "ikj" lc "green",\

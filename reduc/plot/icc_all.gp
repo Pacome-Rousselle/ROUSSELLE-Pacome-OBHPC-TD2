@@ -1,6 +1,6 @@
 set terminal png enhanced font "arial,15" fontscale 1.0 size 1000, 1000 
 set output "icc_all.png"
-set title "Comparative histograms for icc compilation flags per versions"
+set title "Comparative histograms for icc optimization flags per reduc versions"
 
 set datafile separator ";"
 set grid
