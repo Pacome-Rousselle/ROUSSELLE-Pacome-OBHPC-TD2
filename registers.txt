@@ -1,0 +1,42 @@
+L1 register (/sys/devices/system/cpu/cpu0/cache/index0/)
+coherency_line_size 64 
+id 0 
+level 1 
+number_of_sets 64 
+physical_line_partition 1
+shared_cpu_list 0,4
+shared_cpu_map 11
+size 32K
+type Data
+uevent notfound
+ways_of_associativity 8
+
+---------------------------------------------------------------------------------
+
+L2 register (/sys/devices/system/cpu/cpu0/cache/index2/)
+coherency_line_size 64 
+id 0 
+level 2
+number_of_sets 1024 
+physical_line_partition 1
+shared_cpu_list 0,4
+shared_cpu_map 11
+size 256K
+type Unified
+uevent notfound
+ways_of_associativity 4
+
+---------------------------------------------------------------------------------
+
+L3 register (/sys/devices/system/cpu/cpu0/cache/index3/)
+coherency_line_size 64 
+id 0 
+level 3
+number_of_sets 8192 
+physical_line_partition 1
+shared_cpu_list 0-7
+shared_cpu_map ff
+size 6144K
+type Unified
+uevent notfound
+ways_of_associativity 12
