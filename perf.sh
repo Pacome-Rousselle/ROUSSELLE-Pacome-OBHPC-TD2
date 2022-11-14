@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd dgemm
 sudo cpupower -c 1 frequency-set -g performance
 ./run_dgemm.sh
